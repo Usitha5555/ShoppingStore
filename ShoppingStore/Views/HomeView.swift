@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+    @State var columns = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
+    @StateObject var productVM : ProductViewModel = ProductViewModel()
     @State var selected = tabs[0]
+    
     @Namespace var animation
     var body: some View {
         ZStack{
             Color.white.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
+            ScrollView{
             VStack(alignment:.leading){
                 AppBarView()
+            
                 TagLine()
                     .padding(.horizontal)
                     .padding(.vertical)
@@ -33,6 +36,24 @@ struct HomeView: View {
                     }
                     
                 }.padding(.horizontal,35)
+                
+                
+                    
+                    LazyVGrid(columns: self.columns,spacing: 25){
+                                      
+                        ForEach (productVM.productResults, id: \.id) { products in
+                            
+                            UserRow(product: products)
+                            
+                            
+                                    
+                                }
+                                .padding([.horizontal,.top])
+                            }
+                            .background(Color.black.opacity(0.05).edgesIgnoringSafeArea(.all))
+                }
+                
+                
                 
                 
                 
