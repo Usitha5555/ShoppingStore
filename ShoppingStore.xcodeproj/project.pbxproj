@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F3E89A52BA6A1B400A50645 /* ProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E89A42BA6A1B400A50645 /* ProductListModel.swift */; };
+		8F3E89A72BA6A22100A50645 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E89A62BA6A22100A50645 /* ProductViewModel.swift */; };
 		8FE732092B9EF5380014BFC4 /* ShoppingStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE732082B9EF5380014BFC4 /* ShoppingStoreApp.swift */; };
 		8FE7320B2B9EF5380014BFC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE7320A2B9EF5380014BFC4 /* ContentView.swift */; };
 		8FE7320D2B9EF53A0014BFC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FE7320C2B9EF53A0014BFC4 /* Assets.xcassets */; };
@@ -16,7 +18,6 @@
 		8FE732262B9EF53B0014BFC4 /* ShoppingStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE732252B9EF53B0014BFC4 /* ShoppingStoreUITestsLaunchTests.swift */; };
 		8FE732392B9EF6100014BFC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE732382B9EF6100014BFC4 /* HomeView.swift */; };
 		8FE7323B2BA0194F0014BFC4 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE7323A2BA0194F0014BFC4 /* TabButton.swift */; };
-		8FE732452BA05C070014BFC4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE732442BA05C070014BFC4 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F3E89A42BA6A1B400A50645 /* ProductListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListModel.swift; sourceTree = "<group>"; };
+		8F3E89A62BA6A22100A50645 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		8FE732052B9EF5380014BFC4 /* ShoppingStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FE732082B9EF5380014BFC4 /* ShoppingStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingStoreApp.swift; sourceTree = "<group>"; };
 		8FE7320A2B9EF5380014BFC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,7 +52,6 @@
 		8FE732252B9EF53B0014BFC4 /* ShoppingStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8FE732382B9EF6100014BFC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8FE7323A2BA0194F0014BFC4 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
-		8FE732442BA05C070014BFC4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		8FE732332B9EF56C0014BFC4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				8F3E89A62BA6A22100A50645 /* ProductViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -157,7 +160,7 @@
 		8FE732342B9EF5860014BFC4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8FE732442BA05C070014BFC4 /* Product.swift */,
+				8F3E89A42BA6A1B400A50645 /* ProductListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,9 +309,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3E89A72BA6A22100A50645 /* ProductViewModel.swift in Sources */,
 				8FE732392B9EF6100014BFC4 /* HomeView.swift in Sources */,
 				8FE7323B2BA0194F0014BFC4 /* TabButton.swift in Sources */,
-				8FE732452BA05C070014BFC4 /* Product.swift in Sources */,
+				8F3E89A52BA6A1B400A50645 /* ProductListModel.swift in Sources */,
 				8FE7320B2B9EF5380014BFC4 /* ContentView.swift in Sources */,
 				8FE732092B9EF5380014BFC4 /* ShoppingStoreApp.swift in Sources */,
 			);
