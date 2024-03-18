@@ -64,7 +64,7 @@ struct HomeView: View {
                                 
             }
             
-        }
+        }.clipped()
         
         
     }
