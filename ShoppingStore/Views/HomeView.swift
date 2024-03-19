@@ -8,65 +8,92 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var goTOCart = false
     @State var columns = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
     @StateObject var productVM : ProductViewModel = ProductViewModel()
     @State var selected = tabs[0]
     
     @Namespace var animation
     var body: some View {
-        ZStack{
-            Color.white.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            ScrollView{
-            VStack(alignment:.leading){
-                AppBarView()
-            
-                TagLine()
-                    .padding(.horizontal)
-                    .padding(.vertical)
-                Searchhome()
-                Banner()
-                HStack(spacing:0){
-                    ForEach(tabs,id:\.self){tab in
+        NavigationView{
+            ZStack{
+                Color.white.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                ScrollView{
+                    VStack(alignment:.leading){
+                        AppBarView()
                         
-                        //tab button
-                        TabButton(title: tab, selected: $selected, animation: animation)
+                        TagLine()
+                            .padding(.horizontal)
+                            .padding(.vertical)
+                        Searchhome()
+                        Banner()
+                        HStack(spacing:0){
+                            ForEach(tabs,id:\.self){tab in
+                                
+                                //tab button
+                                TabButton(title: tab, selected: $selected, animation: animation)
+                                
+                                //space between
+                                if tabs.last != tab{Spacer(minLength: 0)}
+                            }
+                            
+                        }
+                        .padding(.horizontal,35)
                         
-                        //space between
-                        if tabs.last != tab{Spacer(minLength: 0)}
+                        
+                        
+                        
+                        
+                        LazyVGrid(columns: self.columns,spacing: 25){
+                            
+                            ForEach (productVM.productResults, id: \.id) { products in
+                                
+                                UserRow(product: products)
+                                
+                                
+                                
+                            }
+                            .padding([.horizontal,.top])
+                        }
+                        .background(Color.white.edgesIgnoringSafeArea(.all))
                     }
                     
-                }.padding(.horizontal,35)
-                
-                
                     
-                    LazyVGrid(columns: self.columns,spacing: 25){
-                                      
-                        ForEach (productVM.productResults, id: \.id) { products in
-                            
-                            UserRow(product: products)
-                            
-                            
-                                    
-                                }
-                                .padding([.horizontal,.top])
-                            }
-                            .background(Color.black.opacity(0.05).edgesIgnoringSafeArea(.all))
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 }
                 
+                HStack{
+                    BottomNavBarItem(image: Image("Home")){}
+                    BottomNavBarItem(image: Image("fav")){}
+                    BottomNavBarItem(image: Image("cart")){
+                        goTOCart = true
+                        
+                        
+                    }
+                    BottomNavBarItem(image: Image("account")){}
+                }
+                .padding(14)
+                .background(Color.white)
+                .clipShape(Capsule())
+                .padding()
+                .shadow(color: Color.black.opacity(0.15), radius: 8,x: 2, y: 6)
+                .frame(maxHeight: .infinity, alignment: .bottom)
                 
+                NavigationLink("", isActive: $goTOCart) {
+                    Cart()
                 
-                
-                
-                
-                
-               
-                
-                                
             }
+            .clipped()
             
-        }.clipped()
-        
-        
+            }
+        }
     }
 }
 
@@ -171,3 +198,15 @@ struct Banner: View {
 
 
 
+
+struct BottomNavBarItem: View {
+    
+    let image: Image
+    let action: ()-> Void
+    var body: some View {
+        Button(action: action, label: {
+            image
+                .frame(maxWidth: .infinity)
+        })
+    }
+}

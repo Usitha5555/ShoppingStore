@@ -13,7 +13,9 @@ import SDWebImageSwiftUI
 
 struct DetailView: View {
     
+    @State private var quantity = 1
     @State var selectedSize: String = "M"
+    @State var goTOCart = false
     let sizes = ["XS", "S", "M", "L", "XL"]
     let product: Items
     var body: some View {
@@ -111,22 +113,16 @@ struct DetailView: View {
                     
                         HStack{
                             VStack(alignment: .leading){
-//                                HStack{
-//                                    Text("Quantity")
-//                                        .fontWeight(.bold)
-//                                        .font(.subheadline)
-//                                        .opacity(0.5)
-//                                    Spacer()
-//                                    Text("Price")
-//                                        .fontWeight(.medium)
-//                                        .font(.subheadline)
-//                                        .opacity(0.5)
-//                                }.padding(.horizontal)
                                 
                                 
                                 HStack{
                                     
-                                    Button(action: {}){
+                                    Button(action: {
+                                        if quantity > 1 {
+                                                quantity -= 1
+                                        }
+                                        
+                                    }){
                                         Image(systemName: "minus")
                                             .padding(.all,8)
                                     }
@@ -135,12 +131,14 @@ struct DetailView: View {
                                     .foregroundStyle(.black)
                                     
                                     
-                                    Text("1")
+                                    Text("\(quantity)")
                                         .font(.title2)
                                         .fontWeight(.semibold)
                                         .padding(.horizontal, 8)
                                     
-                                    Button(action: {}){
+                                    Button(action: {
+                                        quantity += 1
+                                    }){
                                         Image(systemName: "plus")
                                             .padding(.all,8)
                                     }
@@ -186,9 +184,12 @@ struct DetailView: View {
                     }
                     Spacer()
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        goTOCart = true
+                    }, label: {
                         
                         Text("Add to Cart")
+                        
                     })
                     .padding()
                     .padding(.horizontal,100)
@@ -213,7 +214,7 @@ struct DetailView: View {
             
         }
         .navigationBarTitleDisplayMode(.inline)
-        
+       
         
         
     }
