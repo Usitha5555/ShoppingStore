@@ -36,6 +36,8 @@ class ProductViewModel : ObservableObject {
             }
         }.resume()
     }
+    
+    
 }
 
 

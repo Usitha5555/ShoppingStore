@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var goTOCart = false
+    @State var goToSearch = false
     @State var columns = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
     @StateObject var productVM : ProductViewModel = ProductViewModel()
     @State var selected = tabs[0]
@@ -70,7 +71,9 @@ struct HomeView: View {
                 }
                 
                 HStack{
-                    BottomNavBarItem(image: Image("Home")){}
+                    BottomNavBarItem(image: Image("Home")){
+                        goToSearch = true
+                    }
                     BottomNavBarItem(image: Image("fav")){}
                     BottomNavBarItem(image: Image("cart")){
                         goTOCart = true
@@ -90,9 +93,13 @@ struct HomeView: View {
                     Cart()
                 
             }
-            .clipped()
+//                NavigationLink(destination: Search(text: .constant("white"), placeholder: "Search Placeholder"), isActive: $goToSearch) {
+//                    EmptyView()
+//                }
+
             
-            }
+            
+            }.clipped()
         }
     }
 }

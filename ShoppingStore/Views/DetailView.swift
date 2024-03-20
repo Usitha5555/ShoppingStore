@@ -19,8 +19,13 @@ struct DetailView: View {
     let sizes = ["XS", "S", "M", "L", "XL"]
     let product: Items
     var body: some View {
-        
-        
+    var totalPrice: Double {
+        if let priceValue = Double(product.price) {
+            return priceValue * Double(quantity)
+        } else {
+            return 0 // or handle the error condition as needed
+        }
+    }
         
         //Text(product.name)
         VStack{
@@ -148,7 +153,9 @@ struct DetailView: View {
                                     .foregroundStyle(.white)
                                     
                                     Spacer()
-                                    Text("LKR 1999")
+                                    
+                                    
+                                    Text("LKR \(totalPrice, specifier: "%.2f")")
                                         .font(.title2)
                                         .fontWeight(.bold)
                                         
@@ -186,6 +193,13 @@ struct DetailView: View {
                     
                     Button(action: {
                         goTOCart = true
+                        let newItem = CartItem(cartId: UUID(),pid: product.id, name: product.name, price: totalPrice, quantity: quantity, imageURL: product.image)
+                            
+                            // Append the new item to the cartItems array
+                            cartItems.append(newItem)
+                            print("appended")
+
+                        
                     }, label: {
                         
                         Text("Add to Cart")
