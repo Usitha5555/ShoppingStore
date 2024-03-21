@@ -10,10 +10,27 @@ import SwiftUI
 struct HomeView: View {
     @State var goTOCart = false
     @State var goToSearch = false
+    @State private var searchText: String = ""
+    @State var isSearchActive = false
     @State var columns = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
     @StateObject var productVM : ProductViewModel = ProductViewModel()
     @State var selected = tabs[0]
     
+    
+    var filteredProducts: [Items] {
+        let lowercaseSelected = selected.lowercased() 
+        
+        if lowercaseSelected == "all" {
+            return productVM.productResults
+        } else {
+            let filtered = productVM.productResults.filter { $0.category.lowercased() == lowercaseSelected }
+            filtered.forEach { item in
+                print(item.category)
+            }
+            return filtered
+        }
+    }
+
     @Namespace var animation
     var body: some View {
         NavigationView{
@@ -47,7 +64,7 @@ struct HomeView: View {
                         
                         LazyVGrid(columns: self.columns,spacing: 25){
                             
-                            ForEach (productVM.productResults, id: \.id) { products in
+                            ForEach (filteredProducts, id: \.id) { products in
                                 
                                 UserRow(product: products)
                                 
@@ -73,6 +90,7 @@ struct HomeView: View {
                 HStack{
                     BottomNavBarItem(image: Image("Home")){
                         goToSearch = true
+                        isSearchActive = true
                     }
                     BottomNavBarItem(image: Image("fav")){}
                     BottomNavBarItem(image: Image("cart")){
@@ -93,9 +111,12 @@ struct HomeView: View {
                     Cart()
                 
             }
-//                NavigationLink(destination: Search(text: .constant("white"), placeholder: "Search Placeholder"), isActive: $goToSearch) {
-//                    EmptyView()
-//                }
+                NavigationLink(
+                    destination: Search(searchTerm: searchText),
+                    isActive: $isSearchActive,
+                    label: { EmptyView() }
+                )
+                .hidden()
 
             
             
@@ -154,38 +175,50 @@ struct TagLine: View {
 
 
 struct Searchhome: View {
-    @State private var search: String = ""
+    @State private var searchText: String = ""
+    @State var isSearchActive = false
+    
     var body: some View {
         HStack {
             HStack{
                 
-                
-                TextField("Search clothings", text: $search)
-                
-            }
-            .padding()
-            .background(Color.white)
-            .frame(height: 50)
-            .overlay(
-                RoundedRectangle(cornerRadius: 14)
-                    .stroke(Color.black, lineWidth: 2)
-            )
-            
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/){
-                
-                Image("search3")
+                TextField("Search clothings", text: $searchText)
                     .padding()
-                    .frame(width: 55, height: 55)
-                    .background(Color.black)
-                    .cornerRadius(10)
+                    .frame(height: 50)
+                    .background(Color.white)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
                 
+                Button(action: {
+                    isSearchActive = true
+                }) {
+                    Image(systemName: "magnifyingglass")
+                        .padding()
+                        .frame(width: 55, height: 55)
+                        .background(Color.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
             }
+            .padding(.horizontal)
             
+            // Other content here
             
-            
-        }.padding(.horizontal)
+            NavigationLink(
+                destination: Search(searchTerm: searchText),
+                isActive: $isSearchActive,
+                label: { EmptyView() }
+            )
+            .hidden()
+        }
+        
+        
     }
-}
+    }
+    
+
 
 struct Banner: View {
     var body: some View {
