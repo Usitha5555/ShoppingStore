@@ -88,11 +88,11 @@ struct HomeView: View {
                 }
                 
                 HStack{
-                    BottomNavBarItem(image: Image("Home")){
+                    BottomNavBarItem(image: Image("searchMenu")){
                         goToSearch = true
                         isSearchActive = true
                     }
-                    BottomNavBarItem(image: Image("fav")){}
+//                    BottomNavBarItem(image: Image("fav")){}
                     BottomNavBarItem(image: Image("cart")){
                         goTOCart = true
                         
@@ -121,7 +121,7 @@ struct HomeView: View {
             
             
             }.clipped()
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

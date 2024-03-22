@@ -42,6 +42,8 @@ struct Cart: View {
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             Text("Price: \(String(format: "%.2f", item.price))")
                             Text("Quantity: \(item.quantity)")
+                            Text("Size:\(item.size)")
+                            
                         }
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .padding(.trailing, 8)
@@ -165,6 +167,8 @@ struct Cart: View {
             cartItems.remove(atOffsets: offsets)
             calculateTotalPrice()
         }
+    
+    
 }
 
 #Preview {

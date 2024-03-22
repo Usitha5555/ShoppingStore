@@ -13,26 +13,48 @@ struct Search: View {
     @State var columns = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
     @State var searchTerm = ""
     
-    
+    @State private var sortAscending = true
+        
     
     init(searchTerm: String) {
             self._searchTerm = State(initialValue: searchTerm)
         }
+//    var filteredItems: [Items] {
+//            if searchTerm.isEmpty {
+//                return productVM.productResults
+//            } else {
+//                return productVM.productResults.filter { $0.name.lowercased().contains(searchTerm.lowercased()) }
+//            }
+//        }
+    
     var filteredItems: [Items] {
-            if searchTerm.isEmpty {
-                return productVM.productResults
-            } else {
-                return productVM.productResults.filter { $0.name.lowercased().contains(searchTerm.lowercased()) }
+            var filtered = searchTerm.isEmpty ? productVM.productResults : productVM.productResults.filter {
+                $0.name.lowercased().contains(searchTerm.lowercased())
             }
+            
+            if sortAscending {
+                filtered.sort { $0.price < $1.price }
+            } else {
+                filtered.sort { $0.price > $1.price }
+            }
+            
+            return filtered
         }
     
     
     
     var body: some View {
         NavigationStack{
-            ZStack{
+            Picker("Sort By", selection: $sortAscending) {
+                                Text("High to Low").tag(true)
+                                Text("Low to High").tag(false)
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                            .padding()
+            
                 ScrollView{
                     
+                                        
                     LazyVGrid(columns: self.columns,spacing: 25){
                         
                         ForEach (filteredItems, id: \.id) { products in
@@ -48,11 +70,12 @@ struct Search: View {
                 }
                 .navigationTitle("Borwse Items")
                 .searchable(text: $searchTerm, prompt: "Search Items")
+                
                     
                     
-                }
+                
             }
-        }
+    }
     
 }
 

@@ -28,6 +28,8 @@ struct UserRow: View {
                 .padding(.all,20)
             }
             Text(product.name)
+                .fontWeight(.medium)
+            Text("LKR"+" "+product.price)
             
                 
         }.padding(.horizontal,15)

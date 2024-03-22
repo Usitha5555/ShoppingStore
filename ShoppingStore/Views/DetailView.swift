@@ -193,7 +193,7 @@ struct DetailView: View {
                     
                     Button(action: {
                         goTOCart = true
-                        let newItem = CartItem(cartId: UUID(),pid: product.id, name: product.name, price: totalPrice, quantity: quantity, imageURL: product.image)
+                        let newItem = CartItem(cartId: UUID(),pid: product.id, name: product.name, price: totalPrice, quantity: quantity, imageURL: product.image,size: selectedSize)
                             
                             // Append the new item to the cartItems array
                             cartItems.append(newItem)

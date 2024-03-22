@@ -13,6 +13,7 @@ struct CartItem {
     let price: Double
     var quantity: Int
     let imageURL: String
+    let size: String
 }
 
 var cartItems: [CartItem] = []
