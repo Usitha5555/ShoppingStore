@@ -14,6 +14,7 @@ struct Cart: View {
     @State var subTotal = 0.0
     @State var shipping = 0.0
     @State var totalWithShipping = 0.0
+    @State private var showAlert = false
     var body: some View {
                 VStack{
                     Text("Cart")
@@ -110,7 +111,7 @@ struct Cart: View {
                     
                     Button(action: {
                         
-                        
+                        showAlert = true
                         
                     }, label: {
                         
@@ -122,6 +123,9 @@ struct Cart: View {
                     .background(.black)
                     .foregroundColor(.white)
                     .cornerRadius(20)
+                    .alert(isPresented: $showAlert) {
+                                    Alert(title: Text("Success"), message: Text("Purchase Successful"), dismissButton: .default(Text("OK")))
+                                }
                 
                     Spacer()
                     

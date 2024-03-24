@@ -92,7 +92,7 @@ struct Login: View {
                             
                         }, label: {
                             
-                                    Text("Sign Up")
+                                    Text("SignIn")
                                         .foregroundColor(.blue)
                                 
                         })
