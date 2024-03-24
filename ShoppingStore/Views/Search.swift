@@ -46,8 +46,8 @@ struct Search: View {
     var body: some View {
         NavigationStack{
             Picker("Sort By", selection: $sortAscending) {
-                                Text("High to Low").tag(true)
-                                Text("Low to High").tag(false)
+                                Text("Low to High").tag(true)
+                                Text("High to Low").tag(false)
                             }
                             .pickerStyle(SegmentedPickerStyle())
                             .padding()

@@ -14,6 +14,7 @@ struct CartItem {
     var quantity: Int
     let imageURL: String
     let size: String
+    let eachPrice: String
 }
 
 var cartItems: [CartItem] = []

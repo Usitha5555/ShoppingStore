@@ -46,7 +46,5 @@ struct ProductListView: View {
     }
 }
 
-#Preview {
-    ProductListView()
-}
+
 

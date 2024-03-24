@@ -30,6 +30,8 @@ struct Cart: View {
             List{
                 ForEach(cartItems, id: \.cartId) { item in
                     HStack {
+                        
+                        
                         AnimatedImage(url: URL(string: item.imageURL))
                             .resizable()
                             .aspectRatio(contentMode: .fit)

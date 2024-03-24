@@ -14,6 +14,9 @@
 		8F3E89AE2BA7093500A50645 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8F3E89AD2BA7093500A50645 /* SDWebImageSwiftUI */; };
 		8F3E89B02BA757B300A50645 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E89AF2BA757B300A50645 /* DetailView.swift */; };
 		8F75EFC82BAA0E99001B1502 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75EFC72BAA0E99001B1502 /* Cart.swift */; };
+		8F7B243D2BAF1E8000EF4A32 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B243C2BAF1E8000EF4A32 /* SignUp.swift */; };
+		8F7B243F2BAFDF5E00EF4A32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B243E2BAFDF5E00EF4A32 /* LoginViewModel.swift */; };
+		8F7B24452BAFEF3D00EF4A32 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7B24442BAFEF3D00EF4A32 /* SplashScreenView.swift */; };
 		8FBE7DA82BACA1A40045DF1E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE7DA72BACA1A40045DF1E /* Login.swift */; };
 		8FBE7DAA2BACA8870045DF1E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE7DA92BACA8870045DF1E /* HomeViewModel.swift */; };
 		8FC850002BAAC94200F62BF3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC84FFF2BAAC94200F62BF3 /* Data.swift */; };
@@ -53,6 +56,9 @@
 		8F3E89AA2BA703D700A50645 /* UserRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRow.swift; sourceTree = "<group>"; };
 		8F3E89AF2BA757B300A50645 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		8F75EFC72BAA0E99001B1502 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		8F7B243C2BAF1E8000EF4A32 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		8F7B243E2BAFDF5E00EF4A32 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8F7B24442BAFEF3D00EF4A32 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		8FBE7DA72BACA1A40045DF1E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		8FBE7DA92BACA8870045DF1E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8FC84FFF2BAAC94200F62BF3 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -170,6 +176,8 @@
 				8FC84FFF2BAAC94200F62BF3 /* Data.swift */,
 				8FC850012BAB785900F62BF3 /* Search.swift */,
 				8FBE7DA72BACA1A40045DF1E /* Login.swift */,
+				8F7B243C2BAF1E8000EF4A32 /* SignUp.swift */,
+				8F7B24442BAFEF3D00EF4A32 /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 			children = (
 				8F3E89A62BA6A22100A50645 /* ProductViewModel.swift */,
 				8FBE7DA92BACA8870045DF1E /* HomeViewModel.swift */,
+				8F7B243E2BAFDF5E00EF4A32 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -345,10 +354,13 @@
 				8F3E89B02BA757B300A50645 /* DetailView.swift in Sources */,
 				8FBE7DA82BACA1A40045DF1E /* Login.swift in Sources */,
 				8FE732392B9EF6100014BFC4 /* HomeView.swift in Sources */,
+				8F7B243F2BAFDF5E00EF4A32 /* LoginViewModel.swift in Sources */,
+				8F7B243D2BAF1E8000EF4A32 /* SignUp.swift in Sources */,
 				8F3E89A92BA6B5AA00A50645 /* ProductListView.swift in Sources */,
 				8FC850002BAAC94200F62BF3 /* Data.swift in Sources */,
 				8FE7323B2BA0194F0014BFC4 /* TabButton.swift in Sources */,
 				8F3E89A52BA6A1B400A50645 /* ProductListModel.swift in Sources */,
+				8F7B24452BAFEF3D00EF4A32 /* SplashScreenView.swift in Sources */,
 				8FE7320B2B9EF5380014BFC4 /* ContentView.swift in Sources */,
 				8FBE7DAA2BACA8870045DF1E /* HomeViewModel.swift in Sources */,
 				8F75EFC82BAA0E99001B1502 /* Cart.swift in Sources */,

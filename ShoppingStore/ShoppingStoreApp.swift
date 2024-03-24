@@ -11,7 +11,7 @@ import SwiftUI
 struct ShoppingStoreApp: App {
     var body: some Scene {
         WindowGroup {
-            Login()
+            SplashScreenView()
         }
     }
 }

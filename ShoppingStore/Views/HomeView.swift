@@ -98,7 +98,7 @@ struct HomeView: View {
                         
                         
                     }
-                    BottomNavBarItem(image: Image("account")){}
+                    BottomNavBarItem(image: Image("order")){}
                 }
                 .padding(14)
                 .background(Color.white)
@@ -128,7 +128,7 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
-var tabs = ["All","Men","Women","Kids"]
+var tabs = ["All","Men","Women","Unisex"]
 struct AppBarView: View {
     var body: some View {
         HStack{

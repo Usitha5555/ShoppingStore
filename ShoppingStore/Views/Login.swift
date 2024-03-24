@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct Login: View {
-    @StateObject var homeVM : HomeViewModal = HomeViewModal()
-    @State var succes = false
+    @StateObject var homeVM : LoginViewModal = LoginViewModal()
+    @State var success = false
+        
     var body: some View {
         NavigationView {
             
@@ -60,7 +61,16 @@ struct Login: View {
                     
                     
                     Button(action: {
-                        homeVM.validateUser()
+                        homeVM.validateUser {
+                            if homeVM.success {
+                                // Navigate to the next view upon successful login
+                                success = true
+                            } else {
+                                // Show an error alert or message
+                                // For example:
+                                // showAlert = true
+                            }
+                        }
                         
                     }, label: {
                         RoundedRectangle(cornerRadius: 14)
@@ -103,9 +113,9 @@ struct Login: View {
                         
                 }
                 Spacer()
-                NavigationLink("", isActive: $homeVM.succes) {
-                    HomeView()
-                }
+                NavigationLink(destination: HomeView(), isActive: $success) {
+                                    EmptyView()
+                                }
                 
             }.padding(.vertical,100)
             

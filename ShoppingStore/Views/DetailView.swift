@@ -17,8 +17,11 @@ struct DetailView: View {
     @State var selectedSize: String = "M"
     @State var goTOCart = false
     let sizes = ["XS", "S", "M", "L", "XL"]
+    @State private var showAlert = false
     let product: Items
+    
     var body: some View {
+    
     var totalPrice: Double {
         if let priceValue = Double(product.price) {
             return priceValue * Double(quantity)
@@ -49,12 +52,13 @@ struct DetailView: View {
                         
                         HStack{
                             VStack(alignment: .leading){
-                                Text(product.category+""+product.name)
+                                Text(product.category+" "+product.name)
                                     .opacity(0.5)
                                     .font(.subheadline)
                                 Text(product.name)
                                     .font(.title)
                                     .fontWeight(.bold)
+                                Text("Colour : "+product.color)
                                 
                                 
                                 
@@ -168,6 +172,9 @@ struct DetailView: View {
                         
                             VStack(alignment: .leading){
                                 Text("Description")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                                    .padding(.bottom,10)
                                 Text(product.description)
                                     .opacity(0.8)
                                     .font(.subheadline)
@@ -193,10 +200,11 @@ struct DetailView: View {
                     
                     Button(action: {
                         goTOCart = true
-                        let newItem = CartItem(cartId: UUID(),pid: product.id, name: product.name, price: totalPrice, quantity: quantity, imageURL: product.image,size: selectedSize)
+                        let newItem = CartItem(cartId: UUID(),pid: product.id, name: product.name, price: totalPrice, quantity: quantity, imageURL: product.image,size: selectedSize,eachPrice: product.price)
                             
                             // Append the new item to the cartItems array
                             cartItems.append(newItem)
+                            showAlert = true
                             print("appended")
 
                         
@@ -210,6 +218,9 @@ struct DetailView: View {
                     .background(.black)
                     .foregroundColor(.white)
                     .cornerRadius(20)
+                    .alert(isPresented: $showAlert) {
+                                    Alert(title: Text("Success"), message: Text("Item added to cart successfully"), dismissButton: .default(Text("OK")))
+                                }
                     Spacer()
                     
                     HStack{}
@@ -228,6 +239,14 @@ struct DetailView: View {
             
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: goTOCart) { newValue in
+                    if newValue {
+                        // Reset values when item is added to cart
+                        quantity = 1
+                        selectedSize = "M"
+                        goTOCart = false // Reset the trigger
+                    }
+                }
        
         
         
