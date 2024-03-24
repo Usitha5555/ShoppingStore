@@ -9,7 +9,8 @@ import SwiftUI
 
 
 struct SignUp: View {
-    @StateObject var homeVM : HomeViewModal = HomeViewModal()
+    @StateObject var regVM : RegisterViewModel = RegisterViewModel()
+    @State private var showHomeView = false
     
     var body: some View {
         NavigationView {
@@ -44,13 +45,13 @@ struct SignUp: View {
                         
                         
                         //                        Text("Sign in to continue..")
-                        MyInputField(inputField: $homeVM.username, fieldName: "Username")
+                        MyInputField(inputField: $regVM.username, fieldName: "Username")
                         RoundedRectangle(cornerRadius: 10)
                             .frame(height: 50)
                             .padding()
                             .foregroundColor(.gray.opacity(0.4))
                             .overlay{
-                                SecureField("Enter a password", text: $homeVM.password)
+                                SecureField("Enter a password", text: $regVM.password)
                                     .padding(.leading, 40)
                                     .textInputAutocapitalization(.never)
                             }
@@ -60,12 +61,12 @@ struct SignUp: View {
                             .padding()
                             .foregroundColor(.gray.opacity(0.4))
                             .overlay{
-                                SecureField("Confirm password", text: $homeVM.password)
+                                SecureField("Confirm password", text: $regVM.repassword)
                                     .padding(.leading, 40)
                                     .textInputAutocapitalization(.never)
                             }
                         
-                            
+                        
                     }
                     .offset(y:-70)
                     .padding(.horizontal,7)
@@ -73,7 +74,11 @@ struct SignUp: View {
                     
                     
                     Button(action: {
-//                        homeVM.validateUser()
+                        regVM.validateUser {
+                            if regVM.success {
+                                // Navigate to the home view upon successful registration
+                                showHomeView = true
+                            }}
                         
                     }, label: {
                         RoundedRectangle(cornerRadius: 14)
@@ -107,9 +112,9 @@ struct SignUp: View {
                 .offset(y:-100)
                 .padding()
                 Spacer()
-                if homeVM.showError {
+                if regVM.showError {
                     
-                    Text(homeVM.errorMessage)
+                    Text(regVM.errorMessage)
                         .foregroundStyle(.black)
                         .bold()
                         .offset(y: -300)
@@ -117,15 +122,18 @@ struct SignUp: View {
                     
                 }
                 Spacer()
-//                NavigationLink("", isActive: $homeVM.succes) {
-//                    HomeView()
-//                }
+                NavigationLink(destination: Login(), isActive: $showHomeView) {
+                    EmptyView()
                 
-            }.padding(.vertical,100)
+
+                
+            }.padding(.vertical,10)
             
             
             
             
+            
+        }
         }
         
     }

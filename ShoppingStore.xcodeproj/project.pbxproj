@@ -30,6 +30,7 @@
 		8FE732262B9EF53B0014BFC4 /* ShoppingStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE732252B9EF53B0014BFC4 /* ShoppingStoreUITestsLaunchTests.swift */; };
 		8FE732392B9EF6100014BFC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE732382B9EF6100014BFC4 /* HomeView.swift */; };
 		8FE7323B2BA0194F0014BFC4 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE7323A2BA0194F0014BFC4 /* TabButton.swift */; };
+		8FEE61412BB01EE5003968B9 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEE61402BB01EE5003968B9 /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		8FE732252B9EF53B0014BFC4 /* ShoppingStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8FE732382B9EF6100014BFC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8FE7323A2BA0194F0014BFC4 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		8FEE61402BB01EE5003968B9 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				8F3E89A62BA6A22100A50645 /* ProductViewModel.swift */,
 				8FBE7DA92BACA8870045DF1E /* HomeViewModel.swift */,
 				8F7B243E2BAFDF5E00EF4A32 /* LoginViewModel.swift */,
+				8FEE61402BB01EE5003968B9 /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				8F7B243F2BAFDF5E00EF4A32 /* LoginViewModel.swift in Sources */,
 				8F7B243D2BAF1E8000EF4A32 /* SignUp.swift in Sources */,
 				8F3E89A92BA6B5AA00A50645 /* ProductListView.swift in Sources */,
+				8FEE61412BB01EE5003968B9 /* RegisterViewModel.swift in Sources */,
 				8FC850002BAAC94200F62BF3 /* Data.swift in Sources */,
 				8FE7323B2BA0194F0014BFC4 /* TabButton.swift in Sources */,
 				8F3E89A52BA6A1B400A50645 /* ProductListModel.swift in Sources */,
