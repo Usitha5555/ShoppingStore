@@ -34,7 +34,14 @@ class RegisterViewModel: ObservableObject {
             return
         }
 
-        guard let url = URL(string: "http://127.0.0.1:8000/register") else {
+//        guard let url = URL(string: "http://127.0.0.1:8000/register") else {
+//            showError = true
+//            errorMessage = "Invalid URL"
+//            completion()
+//            return
+//        }
+        
+        guard let url = URL(string: "https://python-backend-ios.onrender.com/register") else {
             showError = true
             errorMessage = "Invalid URL"
             completion()

@@ -8,7 +8,9 @@ class ProductViewModel : ObservableObject {
     
     @Published var productResults : [Items] = []
     
-    let baseUrl = "http://127.0.0.1:8000/items";
+//    let baseUrl = "http://127.0.0.1:8000/items";
+    let baseUrl = "https://python-backend-ios.onrender.com/items";
+    
     
     init() {
         loadProducts()
