@@ -10,12 +10,17 @@ import SwiftUI
 struct HomeView: View {
     @State var goTOCart = false
     @State var goToSearch = false
+    @State var goToProfile = false
     @State private var searchText: String = ""
     @State var isSearchActive = false
     @State var columns = Array(repeating: GridItem(.flexible(), spacing: 15), count: 2)
     @StateObject var productVM : ProductViewModel = ProductViewModel()
     @State var selected = tabs[0]
+    @State var username: String
     
+    init(username: String) {
+            self._username = State(initialValue: username)
+        }
     
     var filteredProducts: [Items] {
         let lowercaseSelected = selected.lowercased() 
@@ -26,6 +31,7 @@ struct HomeView: View {
             let filtered = productVM.productResults.filter { $0.category.lowercased() == lowercaseSelected }
             filtered.forEach { item in
                 print(item.category)
+                print(username)
             }
             return filtered
         }
@@ -33,6 +39,7 @@ struct HomeView: View {
 
     @Namespace var animation
     var body: some View {
+        
         NavigationView{
             ZStack{
                 Color.white.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -91,14 +98,18 @@ struct HomeView: View {
                     BottomNavBarItem(image: Image("searchMenu")){
                         goToSearch = true
                         isSearchActive = true
+                        
                     }
 //                    BottomNavBarItem(image: Image("fav")){}
                     BottomNavBarItem(image: Image("cart")){
                         goTOCart = true
                         
                         
+                        
                     }
-                    BottomNavBarItem(image: Image("order")){}
+                    BottomNavBarItem(image: Image("account")){
+                        goToProfile = true
+                    }
                 }
                 .padding(14)
                 .background(Color.white)
@@ -117,6 +128,12 @@ struct HomeView: View {
                     label: { EmptyView() }
                 )
                 .hidden()
+                
+                NavigationLink(
+                    destination: UserProfile(username: username),
+                    isActive: $goToProfile,
+                    label: { EmptyView() }
+                )
 
             
             
@@ -126,13 +143,15 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(username: "Usitha")
 }
 var tabs = ["All","Men","Women","Unisex"]
 struct AppBarView: View {
     var body: some View {
         HStack{
-            Button(action: {}) {
+            Button(action: {
+                
+            }) {
                 Image("Menu")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -147,7 +166,7 @@ struct AppBarView: View {
             
             
             Button(action: {}) {
-                Image("profile")
+                Image("avatar2")
                     .resizable()
                     .frame(width: 45,height: 45)
                     .cornerRadius(50)
@@ -224,13 +243,14 @@ struct Banner: View {
     var body: some View {
         HStack{
             HStack{
-                Image("banner")
+                Image("curved")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 150)
                     .clipped()
-                    .cornerRadius(10)
+                    .cornerRadius(0)
             }.padding(.horizontal)
+                
             
         }
     }

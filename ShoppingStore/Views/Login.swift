@@ -10,6 +10,8 @@ import SwiftUI
 struct Login: View {
     @StateObject var homeVM : LoginViewModal = LoginViewModal()
     @State var success = false
+    @State var signupsuccess = false
+    @State var userlog = ""
         
     var body: some View {
         NavigationView {
@@ -65,6 +67,8 @@ struct Login: View {
                             if homeVM.success {
                                 // Navigate to the next view upon successful login
                                 success = true
+                                userlog = homeVM.username
+                                print(userlog)
                             } else {
                                 // Show an error alert or message
                                 // For example:
@@ -78,7 +82,7 @@ struct Login: View {
                             .frame(height: 50)
                             .padding(10)
                             .overlay{
-                                Text("Sign Up")
+                                Text("Sign In")
                                     .foregroundColor(.white)
                             }
                     })
@@ -88,11 +92,11 @@ struct Login: View {
                         
                         Text("Dont have an account ?")
                         Button(action: {
-                            
+                            signupsuccess = true
                             
                         }, label: {
                             
-                                    Text("SignIn")
+                                    Text("Signup")
                                         .foregroundColor(.blue)
                                 
                         })
@@ -113,16 +117,21 @@ struct Login: View {
                         
                 }
                 Spacer()
-                NavigationLink(destination: HomeView(), isActive: $success) {
+                NavigationLink(destination: HomeView(username: userlog), isActive: $success) {
+                                    EmptyView()
+                                    
+                                }
+                NavigationLink(destination: SignUp(), isActive: $signupsuccess) {
                                     EmptyView()
                                 }
+                
                 
             }.padding(.vertical,100)
             
             
             
             
-        }
+        }.navigationBarBackButtonHidden(true)
             
         }
     }

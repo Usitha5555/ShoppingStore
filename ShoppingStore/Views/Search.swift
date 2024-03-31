@@ -47,7 +47,9 @@ struct Search: View {
         NavigationStack{
             Picker("Sort By", selection: $sortAscending) {
                                 Text("Low to High").tag(true)
+                                
                                 Text("High to Low").tag(false)
+                                
                             }
                             .pickerStyle(SegmentedPickerStyle())
                             .padding()

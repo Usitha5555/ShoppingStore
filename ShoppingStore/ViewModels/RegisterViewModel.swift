@@ -22,7 +22,7 @@ class RegisterViewModel: ObservableObject {
     func validateUser(completion: @escaping () -> Void) {
         if username.isEmpty || password.isEmpty || repassword.isEmpty {
             showError = true
-            errorMessage = "Please enter username, password, and re-enter password"
+            errorMessage = "Please check username/password"
             completion()
             return
         }

@@ -11,6 +11,7 @@ import SwiftUI
 struct SignUp: View {
     @StateObject var regVM : RegisterViewModel = RegisterViewModel()
     @State private var showHomeView = false
+    @State private var showLoginView = false
     
     var body: some View {
         NavigationView {
@@ -98,10 +99,10 @@ struct SignUp: View {
                         Text("Already have an account ?")
                         Button(action: {
                             
-                            
+                            showLoginView = true
                         }, label: {
                             
-                            Text("Sign Up")
+                            Text("Sign in")
                                 .foregroundColor(.blue)
                             
                         })
@@ -128,13 +129,20 @@ struct SignUp: View {
 
                 
             }.padding(.vertical,10)
+                
+            NavigationLink(destination: Login(), isActive: $showLoginView) {
+                    EmptyView()
+                
+
+                
+            }.padding(.vertical,10)
             
             
             
             
             
         }
-        }
+        }.navigationBarBackButtonHidden(true)
         
     }
     
