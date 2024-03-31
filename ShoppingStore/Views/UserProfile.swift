@@ -52,6 +52,7 @@ struct UserProfile: View {
                 .multilineTextAlignment(.center)
                 .font(.subheadline)
                 .opacity(0.5)
+            Text("all")
             
             
             Spacer()
